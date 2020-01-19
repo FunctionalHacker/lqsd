@@ -28,3 +28,6 @@ The configuration file resides at `~/.config/lqsd/config.toml`. There you can se
 
 ## Why Rust?
 I wanted start a small project to learn Rust. Before lqsd, I was using [this script](https://github.com/Bonnee/dotfiles/blob/wayland/scripts/bin/dim.sh) and figured, why not rewrite it in Rust.
+
+# Mirrors
+This repository is mirrored to [GitLab](https://gitlab.com/ReekyMarko/lqsd) and [GitHub](https://github.com/ReekyMarko/lqsd)
