@@ -2,7 +2,7 @@
 A simple utility which dims your screen. It saves the previous brightness too, so you can restore to the point before dimming.
 
 ## Why Rust?
-I wanted start a small project to learn Rust. Before this, I was using [this script]("https://github.com/Bonnee/dotfiles/blob/wayland/scripts/bin/dim.sh") and figured, why not rewrite it in Rust.
+I wanted start a small project to learn Rust. Before this, I was using [this script](https://github.com/Bonnee/dotfiles/blob/wayland/scripts/bin/dim.sh) and figured, why not rewrite it in Rust.
 
 ## Usage
 ```
