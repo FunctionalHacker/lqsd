@@ -4,7 +4,7 @@ A simple utility which dims your screen. It saves the previous brightness too, s
 This is useful if you are running a standalone screen locking setup like swayidle/swaylock. Check out [my configuration files](https://git.reekynet.com/ReekyMarko/dotfiles/src/branch/master/home/Scripts/swayidle.sh) for an example use case.
 
 ## Usage
-```
+```nosyntax
 USAGE:
     lqsd [FLAGS] [OPTIONS]
 
@@ -30,12 +30,12 @@ The configuration file resides at `~/.config/lqsd/config.toml`. There you can se
 So far, I have only packaged this for [Arch Linux](https://aur.archlinux.org/packages/lqsd)
 
 To install it, use your favorite AUR helper, yay for example:
-```
+```nosyntax
 yay -S lqsd
 ```
 
 Or if you don't want to build it from source, a binary version is also available:
-```
+```nosyntax
 yay -S lqsd-bin
 ```
 
