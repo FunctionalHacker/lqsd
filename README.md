@@ -17,14 +17,14 @@ FLAGS:
 OPTIONS:
     -c, --config <config>    Sets a custom config file
 ```
-The configuration file resides at `$XDG_CONFIG_HOME/lqsd/config.toml`. There you can set these values:
+The configuration file resides at `~/.config/lqsd/config.toml`. There you can set these values:
 
-| Key 			   | Explanation 																				  |
-| ---------------- | -------------------------------------------------------------------------------------------- |
-| resume_file_path | The location where the previous brightness is saved (default: "/tmp/lqsd-resume")  		  |
-| idle_level       | the minimum brightness that will be dimmed to. Can be a value between 0-100 (default 0)      |
-| dim_speed 	   | this sets the "sleep time" between each backlight command. It's in milliseconds (default 50) |
-| resume_speed     | same as dim_speed, only for the resume operation `-r` (default 25) 						  |
+| Key 			   | Explanation 																				  | Default 			|
+| ---------------- | -------------------------------------------------------------------------------------------- | :-----------------: |
+| resume_file_path | The location where the previous brightness is saved                                          | "/tmp/lqsd-resume"  |
+| idle_level       | The minimum brightness that will be dimmed to. Can be a value between 0-100                  | 0 					|
+| dim_speed 	   | This sets the "sleep time" between each backlight command. It's in milliseconds              | 50 					|
+| resume_speed     | Same as dim_speed, only for the resume operation `-r`              						  | 25  				|
 
 ## Why Rust?
 I wanted start a small project to learn Rust. Before lqsd, I was using [this script](https://github.com/Bonnee/dotfiles/blob/wayland/scripts/bin/dim.sh) and figured, why not rewrite it in Rust.
