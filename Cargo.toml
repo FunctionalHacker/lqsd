@@ -1,0 +1,15 @@
+[package]
+name = "lqsd"
+version = "0.1.0"
+authors = ["Marko Korhonen <marko.korhonen@reekynet.com>"]
+edition = "2018"
+publish = false
+description = "Dims your screen smoothly"
+repository = "https://git.reekynet.com/ReekyMarko/lqsd"
+license = "MIT"
+
+[dependencies]
+clap = "2.33.0"
+xdg = "2.2.0"
+toml = "0.5.6"
+serde = {version = "1.0.104", features = ["derive"]}
