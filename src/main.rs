@@ -11,7 +11,7 @@ use std::{thread, time};
 
 #[derive(Deserialize, Serialize)]
 pub struct Config {
-    resume_file_path: PathBuf,
+    resume_file: PathBuf,
     idle_level: i32,
     dim_speed: u64,
     resume_speed: u64,
@@ -71,16 +71,16 @@ fn main() {
 
     if args.is_present("dim") {
         let current_brightness = get_brightness().to_string();
-        match fs::write(&conf.resume_file_path, current_brightness) {
+        match fs::write(&conf.resume_file, current_brightness) {
             Ok(()) => println!("Current brightness written to resume file"),
             Err(err) => eprintln!("Error writing brightness to resume file: {}", err),
         }
         transition(conf.idle_level, dim_speed);
     }
     if args.is_present("resume") {
-        let old_brightness: i32 = fs::read(&conf.resume_file_path).unwrap().parse().unwrap();
+        let old_brightness: i32 = fs::read(&conf.resume_file).unwrap().parse().unwrap();
         transition(old_brightness, resume_speed);
-        match fs::remove(&conf.resume_file_path) {
+        match fs::remove(&conf.resume_file) {
             Ok(()) => println!("Resume file removed"),
             Err(err) => eprintln!("Failed to remove resume file: {}", err),
         }

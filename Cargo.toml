@@ -11,5 +11,5 @@ license = "MIT"
 [dependencies]
 clap = "2.33.0"
 xdg = "2.2.0"
-toml = "0.5.6"
 serde = {version = "1.0.104", features = ["derive"]}
+toml = "0.5.6"

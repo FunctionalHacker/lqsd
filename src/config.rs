@@ -7,7 +7,7 @@ extern crate xdg;
 
 fn default_config() -> Config {
     Config {
-        resume_file_path: PathBuf::from("/tmp/lqsd-resume"),
+        resume_file: PathBuf::from("/tmp/lqsd-resume"),
         idle_level: 0,
         dim_speed: 50,
         resume_speed: 25,
