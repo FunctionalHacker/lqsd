@@ -43,4 +43,4 @@ yay -S lqsd-bin
 I wanted start a small project to learn Rust. Before lqsd, I was using [this script](https://github.com/Bonnee/dotfiles/blob/wayland/scripts/bin/dim.sh) and figured, why not rewrite it in Rust.
 
 # Mirrors
-This repository lives at [ReekyNET Git], but it is also mirrored to [GitLab](https://gitlab.com/ReekyMarko/lqsd) and [GitHub](https://github.com/ReekyMarko/lqsd)
+This repository lives at [ReekyNET Git](https://git.reekynet.com/ReekyMarko/lqsd), but it is also mirrored to [GitLab](https://gitlab.com/ReekyMarko/lqsd) and [GitHub](https://github.com/ReekyMarko/lqsd)
