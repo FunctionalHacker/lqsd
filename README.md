@@ -39,6 +39,8 @@ Or if you don't want to build it from source, a binary version is also available
 yay -S lqsd-bin
 ```
 
+Prebuilt binaries, their checksums and signatures live in [GitLab](https://gitlab.com/ReekyMarko/lqsd/releases)
+
 ## Why Rust?
 I wanted start a small project to learn Rust. Before lqsd, I was using [this script](https://github.com/Bonnee/dotfiles/blob/wayland/scripts/bin/dim.sh) and figured, why not rewrite it in Rust.
 
