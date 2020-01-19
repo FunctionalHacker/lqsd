@@ -26,8 +26,21 @@ The configuration file resides at `~/.config/lqsd/config.toml`. There you can se
 | dim_speed 	   | This sets the "sleep time" between each backlight command. It's in milliseconds              | 50 					|
 | resume_speed     | Same as dim_speed, only for the resume operation `-r`              						  | 25  				|
 
+## Installation
+So far, I have only packaged this for [Arch Linux](https://aur.archlinux.org/packages/lqsd)
+
+To install it, use your favorite AUR helper, yay for example:
+```
+yay -S lqsd
+```
+
+Or if you don't want to build it from source, a binary version is also available:
+```
+yay -S lqsd-bin
+```
+
 ## Why Rust?
 I wanted start a small project to learn Rust. Before lqsd, I was using [this script](https://github.com/Bonnee/dotfiles/blob/wayland/scripts/bin/dim.sh) and figured, why not rewrite it in Rust.
 
 # Mirrors
-This repository is mirrored to [GitLab](https://gitlab.com/ReekyMarko/lqsd) and [GitHub](https://github.com/ReekyMarko/lqsd)
+This repository lives at [ReekyNET Git], but it is also mirrored to [GitLab](https://gitlab.com/ReekyMarko/lqsd) and [GitHub](https://github.com/ReekyMarko/lqsd)
