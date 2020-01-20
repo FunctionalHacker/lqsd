@@ -27,7 +27,17 @@ The configuration file resides at `~/.config/lqsd/config.toml`. There you can se
 | resume_speed     | Same as dim_speed, but for the resume operation `-r`              						  	  | 25  				|
 
 ## Installation
-So far, I have only packaged this for [Arch Linux](https://aur.archlinux.org/packages/lqsd)
+
+### Dependencies
+The only external dependency is [light](https://github.com/haikarainen/light)
+
+### Building
+Clone this repository and run `cargo build --release` inside the project to compile a static binary.
+
+Prebuilt binaries, their checksums and signatures live in [GitLab](https://gitlab.com/ReekyMarko/lqsd/releases)
+
+### Arch Linux
+So far, I have only packaged this for Arch Linux. Packages are in [AUR](https://aur.archlinux.org/packages/?K=lqsd)
 
 To install it, use your favorite AUR helper, yay for example:
 ```nosyntax
@@ -38,8 +48,6 @@ Or if you don't want to build it from source, a binary version is also available
 ```nosyntax
 yay -S lqsd-bin
 ```
-
-Prebuilt binaries, their checksums and signatures live in [GitLab](https://gitlab.com/ReekyMarko/lqsd/releases)
 
 ## Why Rust?
 I wanted start a small project to learn Rust. Before lqsd, I was using [this script](https://github.com/Bonnee/dotfiles/blob/wayland/scripts/bin/dim.sh) and figured, why not rewrite it in Rust.
