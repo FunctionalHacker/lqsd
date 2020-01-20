@@ -21,10 +21,10 @@ The configuration file resides at `~/.config/lqsd/config.toml`. There you can se
 
 | Key 			   | Explanation 																				  | Default 			|
 | ---------------- | -------------------------------------------------------------------------------------------- | :-----------------: |
-| resume_file 	   | The location where the previous brightness is saved                                          | "/tmp/lqsd-resume"  |
+| resume_file 	   | The location where the previous brightness is saved                                          | /tmp/lqsd-resume    |
 | idle_level       | The minimum brightness that will be dimmed to. Can be a value between 0-100                  | 0 					|
 | dim_speed 	   | This sets the "sleep time" between each backlight command. It's in milliseconds              | 50 					|
-| resume_speed     | Same as dim_speed, only for the resume operation `-r`              						  | 25  				|
+| resume_speed     | Same as dim_speed, but for the resume operation `-r`              						  	  | 25  				|
 
 ## Installation
 So far, I have only packaged this for [Arch Linux](https://aur.archlinux.org/packages/lqsd)
