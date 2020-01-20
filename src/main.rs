@@ -1,21 +1,13 @@
 extern crate clap;
 
-mod cli;
-mod config;
-mod fs;
-
-use serde::{Deserialize, Serialize};
+use config::Config;
 use std::path::PathBuf;
 use std::process::Command;
 use std::{thread, time};
 
-#[derive(Deserialize, Serialize)]
-pub struct Config {
-    resume_file: PathBuf,
-    idle_level: i32,
-    dim_speed: u64,
-    resume_speed: u64,
-}
+mod cli;
+mod config;
+mod fs;
 
 fn transition(w_brightness: i32, speed: time::Duration) {
     let c_brightness = get_brightness();

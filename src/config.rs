@@ -1,16 +1,26 @@
+extern crate xdg;
+
 use super::fs;
-use super::Config;
+use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 use xdg::BaseDirectories;
 
-extern crate xdg;
+#[derive(Deserialize, Serialize)]
+pub struct Config {
+    pub resume_file: PathBuf,
+    pub idle_level: i32,
+    pub dim_speed: u64,
+    pub resume_speed: u64,
+}
 
-fn default_config() -> Config {
-    Config {
-        resume_file: PathBuf::from("/tmp/lqsd-resume"),
-        idle_level: 0,
-        dim_speed: 50,
-        resume_speed: 25,
+impl Default for Config {
+    fn default() -> Self {
+        Self {
+            resume_file: PathBuf::from("/tmp/lqsd-resume"),
+            idle_level: 0,
+            dim_speed: 50,
+            resume_speed: 25,
+        }
     }
 }
 
@@ -29,11 +39,11 @@ pub fn load_xdg() -> Config {
             "{} does not exist, writing default configuration",
             path.display()
         );
-        match fs::write(&path, toml::to_string(&default_config()).unwrap()) {
+        match fs::write(&path, toml::to_string(&Config::default()).unwrap()) {
             Ok(()) => println!("Default config saved to {}", path.display()),
             Err(err) => eprintln!("Failed to write default config: {}", err),
         };
-        default_config()
+        Config::default()
     } else {
         let toml = fs::read(&path).unwrap();
         let config: Config = toml::from_str(&toml).unwrap();
