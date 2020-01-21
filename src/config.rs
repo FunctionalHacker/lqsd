@@ -6,6 +6,7 @@ use std::path::PathBuf;
 use xdg::BaseDirectories;
 
 #[derive(Deserialize, Serialize)]
+#[serde(default)]
 pub struct Config {
     pub resume_file: PathBuf,
     pub idle_level: i32,
