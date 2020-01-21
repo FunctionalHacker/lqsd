@@ -56,10 +56,17 @@ fn xdg_path() -> PathBuf {
 
 pub fn copy_config() {
     let path = xdg_path();
-    match fs::write(&path, toml::to_string(&Config::default()).unwrap()) {
-        Ok(()) => println!("Default config saved to {}", path.display()),
-        Err(err) => eprintln!("Failed to write default config: {}", err),
-    };
+    if !path.exists() {
+        match fs::write(&path, toml::to_string(&Config::default()).unwrap()) {
+            Ok(()) => println!("Default config saved to {}", path.display()),
+            Err(err) => eprintln!("Failed to write default config: {}", err),
+        };
+    } else {
+        eprintln!(
+            "There is a file at {} already. Will not overwrite",
+            path.display()
+        );
+    }
 }
 
 pub fn load_xdg() -> Config {
