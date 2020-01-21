@@ -6,6 +6,7 @@ use std::path::PathBuf;
 use xdg::BaseDirectories;
 
 #[derive(Deserialize, Serialize)]
+#[serde(default)]
 pub struct Config {
     pub resume_file: PathBuf,
     pub idle_level: i32,
@@ -24,39 +25,53 @@ impl Default for Config {
     }
 }
 
-fn xdg_config() -> PathBuf {
+fn read_parse(path: PathBuf) -> Config {
+    let mut _toml = String::from("");
+
+    match fs::read(&path) {
+        Ok(result) => _toml = result,
+        Err(err) => {
+            eprintln!("Failed to read config: {}", err);
+            println!("Using default config");
+            return Config::default();
+        }
+    }
+
+    match toml::from_str(&_toml) {
+        Ok(result) => return result,
+        Err(err) => {
+            eprintln!("Failed to read config: {}", err);
+            println!("Using default config");
+            return Config::default();
+        }
+    }
+}
+
+fn xdg_path() -> PathBuf {
     BaseDirectories::with_prefix("lqsd")
         .expect("cannot create configuration directory")
         .place_config_file("config.toml")
         .unwrap()
 }
 
+pub fn copy_config() {
+    let path = xdg_path();
+    match fs::write(&path, toml::to_string(&Config::default()).unwrap()) {
+        Ok(()) => println!("Default config saved to {}", path.display()),
+        Err(err) => eprintln!("Failed to write default config: {}", err),
+    };
+}
+
 pub fn load_xdg() -> Config {
-    let path = xdg_config();
+    let path = xdg_path();
 
     if !path.exists() {
-        println!(
-            "{} does not exist, writing default configuration",
-            path.display()
-        );
-        match fs::write(&path, toml::to_string(&Config::default()).unwrap()) {
-            Ok(()) => println!("Default config saved to {}", path.display()),
-            Err(err) => eprintln!("Failed to write default config: {}", err),
-        };
         Config::default()
     } else {
-        let toml = fs::read(&path).unwrap();
-        let config: Config = toml::from_str(&toml).unwrap();
-        config
+        read_parse(xdg_path())
     }
 }
 
 pub fn load_user(path: PathBuf) -> Config {
-    if !path.exists() {
-        panic!("{} does not exist", path.display());
-    } else {
-        let toml = fs::read(&path).unwrap();
-        let config: Config = toml::from_str(&toml).unwrap();
-        config
-    }
+    read_parse(path)
 }

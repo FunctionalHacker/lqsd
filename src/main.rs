@@ -58,23 +58,42 @@ fn main() {
     } else {
         conf = config::load_xdg();
     }
+
     let dim_speed = time::Duration::from_millis(conf.dim_speed);
     let resume_speed = time::Duration::from_millis(conf.resume_speed);
 
     if args.is_present("dim") {
         let current_brightness = get_brightness().to_string();
         match fs::write(&conf.resume_file, current_brightness) {
-            Ok(()) => println!("Current brightness written to resume file"),
+            Ok(()) => println!(
+                "Current brightness written to resume file at {}",
+                conf.resume_file.display()
+            ),
             Err(err) => eprintln!("Error writing brightness to resume file: {}", err),
         }
         transition(conf.idle_level, dim_speed);
     }
+
     if args.is_present("resume") {
-        let old_brightness: i32 = fs::read(&conf.resume_file).unwrap().parse().unwrap();
+        let old_brightness: i32;
+
+        match fs::read(&conf.resume_file) {
+            Ok(result) => old_brightness = result.parse().unwrap(),
+            Err(err) => {
+                eprintln!("Failed to read resume_file: {}", err);
+                old_brightness = 100;
+            }
+        }
+
         transition(old_brightness, resume_speed);
+
         match fs::remove(&conf.resume_file) {
             Ok(()) => println!("Resume file removed"),
             Err(err) => eprintln!("Failed to remove resume file: {}", err),
         }
+    }
+
+    if args.is_present("copy-config") {
+        config::copy_config();
     }
 }

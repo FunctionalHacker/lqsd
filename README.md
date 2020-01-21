@@ -9,13 +9,14 @@ USAGE:
     lqsd [FLAGS] [OPTIONS]
 
 FLAGS:
-    -d, --dim        Dims the screen to idle level set in configuration
-    -h, --help       Prints help information
-    -r, --resume     Sets the backlight to the value it was before dimming
-    -V, --version    Prints version information
+    -d, --dim            Dims the screen to idle level set in configuration
+    -r, --resume         Sets the backlight to the value it was before dimming
+        --copy-config    Copies the default config file to $XDG_CONFIG_HOME/lqsd
+    -h, --help           Prints help information
+    -V, --version        Prints version information
 
 OPTIONS:
-    -c, --config <config>    Sets a custom config file
+        --config <FILE>    Sets a custom config file
 ```
 The configuration file resides at `~/.config/lqsd/config.toml`. There you can set these values:
 
