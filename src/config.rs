@@ -39,15 +39,33 @@ pub fn load_xdg() -> Config {
             "{} does not exist, writing default configuration",
             path.display()
         );
+
         match fs::write(&path, toml::to_string(&Config::default()).unwrap()) {
             Ok(()) => println!("Default config saved to {}", path.display()),
             Err(err) => eprintln!("Failed to write default config: {}", err),
         };
+
         Config::default()
     } else {
-        let toml = fs::read(&path).unwrap();
-        let config: Config = toml::from_str(&toml).unwrap();
-        config
+        let toml: String;
+
+        match fs::read(&path) {
+            Ok(string) => toml = string,
+            Err(err) => {
+                eprintln!("Failed to read config: {}", err);
+                eprintln!("Using default config");
+                return Config::default();
+            }
+        }
+
+        match toml::from_str<Config, _>(&toml) {
+            Ok(parsed_conf) = parsed_conf,
+            Err(err) => {
+                eprintln!("Failed to parse config: {}", err);
+                eprintln!("Using default config");
+                config
+            }
+        }
     }
 }
 
@@ -56,7 +74,9 @@ pub fn load_user(path: PathBuf) -> Config {
         panic!("{} does not exist", path.display());
     } else {
         let toml = fs::read(&path).unwrap();
-        let config: Config = toml::from_str(&toml).unwrap();
+        match toml::from_str(&toml) {
+            Ok(parsed_conf) ->
+        }
         config
     }
 }
