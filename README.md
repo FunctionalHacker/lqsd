@@ -30,30 +30,34 @@ The configuration file resides at `~/.config/lqsd/config.toml`. There you can se
 ## Installation
 
 ### Dependencies
-The only external dependency is [light](https://github.com/haikarainen/light)
+The only external dependency is [light](https://github.com/haikarainen/light).
 
 ### Building
 Clone this repository and run `cargo build --release` inside the project to compile a static binary.
 
 ### Arch Linux
-So far, I have only packaged this for Arch Linux. Packages are in [AUR](https://aur.archlinux.org/packages/?K=lqsd)
+So far, I have only packaged this for Arch Linux. Packages are in [AUR](https://aur.archlinux.org/packages/?K=lqsd).
 
 To install it, use your favorite AUR helper, yay for example:
 ```nosyntax
 yay -S lqsd
 ```
-
-Or if you don't want to build it from source, a binary version is also available:
+Select if you want to [1] build from source [2] install a precompiled binary:
 ```nosyntax
-yay -S lqsd-bin
-```
-## Releases
-Release notes can be found in [GitHub](https://github.com/ReekyMarko/lqsd/releases) (Gitea does not support editing tags yet)
+:: There are 2 providers available for lqsd:
+:: Repository AUR
+    1) lqsd 2) lqsd-bin
 
-Prebuilt binaries, their checksums and signatures can also be found there
+Enter a number (default=1):
+```
+
+## Releases
+Release notes can be found in [GitHub](https://github.com/ReekyMarko/lqsd/releases) (Gitea does not support editing tags yet).
+
+Prebuilt binaries, their checksums and signatures can also be found there.
 
 ## Why Rust?
 I wanted start a small project to learn Rust. Before lqsd, I was using [this script](https://github.com/Bonnee/dotfiles/blob/wayland/scripts/bin/dim.sh) and figured, why not rewrite it in Rust.
 
 # Mirrors
-This repository lives at [ReekyNET Git](https://git.reekynet.com/ReekyMarko/lqsd), but it is also mirrored to [GitLab](https://gitlab.com/ReekyMarko/lqsd) and [GitHub](https://github.com/ReekyMarko/lqsd)
+This repository lives at [My Git server](https://git.reekynet.com/ReekyMarko/lqsd), but it is also mirrored to [GitHub](https://github.com/ReekyMarko/lqsd) and [GitLab](https://gitlab.com/ReekyMarko/lqsd)
