@@ -26,10 +26,10 @@ impl Default for Config {
 }
 
 fn read_parse(path: PathBuf) -> Config {
-    let mut toml = String::from("");
+    let mut _toml = String::from("");
 
     match fs::read(&path) {
-        Ok(result) => toml = result,
+        Ok(result) => _toml = result,
         Err(err) => {
             eprintln!("Failed to read config: {}", err);
             println!("Using default config");
@@ -37,7 +37,7 @@ fn read_parse(path: PathBuf) -> Config {
         }
     }
 
-    match toml::from_str(&toml) {
+    match toml::from_str(&_toml) {
         Ok(result) => return result,
         Err(err) => {
             eprintln!("Failed to read config: {}", err);
