@@ -35,7 +35,7 @@ The only external dependency is [light](https://github.com/haikarainen/light)
 ### Building
 Clone this repository and run `cargo build --release` inside the project to compile a static binary.
 
-Prebuilt binaries, their checksums and signatures live in [GitLab](https://gitlab.com/ReekyMarko/lqsd/releases)
+Prebuilt binaries, their checksums and signatures live in [GitHub](https://github.com/ReekyMarko/lqsd/releases)
 
 ### Arch Linux
 So far, I have only packaged this for Arch Linux. Packages are in [AUR](https://aur.archlinux.org/packages/?K=lqsd)
