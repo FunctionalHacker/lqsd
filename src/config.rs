@@ -24,59 +24,53 @@ impl Default for Config {
     }
 }
 
-fn xdg_config() -> PathBuf {
+fn read_parse(path: PathBuf) -> Config {
+    let mut toml = String::from("");
+
+    match fs::read(&path) {
+        Ok(result) => toml = result,
+        Err(err) => {
+            eprintln!("Failed to read config: {}", err);
+            println!("Using default config");
+            return Config::default();
+        }
+    }
+
+    match toml::from_str(&toml) {
+        Ok(result) => return result,
+        Err(err) => {
+            eprintln!("Failed to read config: {}", err);
+            println!("Using default config");
+            return Config::default();
+        }
+    }
+}
+
+fn xdg_path() -> PathBuf {
     BaseDirectories::with_prefix("lqsd")
         .expect("cannot create configuration directory")
         .place_config_file("config.toml")
         .unwrap()
 }
 
+pub fn copy_config() {
+    let path = xdg_path();
+    match fs::write(&path, toml::to_string(&Config::default()).unwrap()) {
+        Ok(()) => println!("Default config saved to {}", path.display()),
+        Err(err) => eprintln!("Failed to write default config: {}", err),
+    };
+}
+
 pub fn load_xdg() -> Config {
-    let path = xdg_config();
+    let path = xdg_path();
 
     if !path.exists() {
-        println!(
-            "{} does not exist, writing default configuration",
-            path.display()
-        );
-
-        match fs::write(&path, toml::to_string(&Config::default()).unwrap()) {
-            Ok(()) => println!("Default config saved to {}", path.display()),
-            Err(err) => eprintln!("Failed to write default config: {}", err),
-        };
-
         Config::default()
     } else {
-        let toml: String;
-
-        match fs::read(&path) {
-            Ok(string) => toml = string,
-            Err(err) => {
-                eprintln!("Failed to read config: {}", err);
-                eprintln!("Using default config");
-                return Config::default();
-            }
-        }
-
-        match toml::from_str<Config, _>(&toml) {
-            Ok(parsed_conf) = parsed_conf,
-            Err(err) => {
-                eprintln!("Failed to parse config: {}", err);
-                eprintln!("Using default config");
-                config
-            }
-        }
+        read_parse(xdg_path())
     }
 }
 
 pub fn load_user(path: PathBuf) -> Config {
-    if !path.exists() {
-        panic!("{} does not exist", path.display());
-    } else {
-        let toml = fs::read(&path).unwrap();
-        match toml::from_str(&toml) {
-            Ok(parsed_conf) ->
-        }
-        config
-    }
+    read_parse(path)
 }
