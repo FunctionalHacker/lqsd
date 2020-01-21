@@ -16,7 +16,7 @@ FLAGS:
     -V, --version        Prints version information
 
 OPTIONS:
-        --config <FILE>    Sets a custom config file
+    --config <FILE>      Sets a custom config file
 ```
 The configuration file resides at `~/.config/lqsd/config.toml`. There you can set these values:
 
