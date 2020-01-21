@@ -18,7 +18,9 @@ FLAGS:
 OPTIONS:
     --config <FILE>      Sets a custom config file
 ```
-The configuration file resides at `~/.config/lqsd/config.toml`. There you can set these values:
+The configuration file resides at `~/.config/lqsd/config.toml`. To copy the default configuration file in place, you can use `--copy-config`.
+
+In the configuration file you can set the following values:
 
 | Key 			   | Explanation 																				  | Default 			|
 | ---------------- | -------------------------------------------------------------------------------------------- | :-----------------: |
