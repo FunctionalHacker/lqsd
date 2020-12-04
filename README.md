@@ -1,7 +1,7 @@
 # LiQuid Screen Dim
 A simple utility which dims your screen. It saves the previous brightness too, so you can restore to the point before dimming.
 
-This is useful if you are running a standalone screen locking setup like swayidle/swaylock. Check out [my configuration files](https://git.reekynet.com/ReekyMarko/dotfiles/src/branch/master/home/Scripts/swayidle.sh) for an example use case.
+This is useful if you are running a standalone screen locking setup like swayidle/swaylock. Check out [my configuration files](https://git.korhonen.cc/FunctionalHacker/dotfiles/src/branch/master/home/.config/sway/scripts/idle.sh) for an example use case.
 
 ## Usage
 ```nosyntax
@@ -54,7 +54,7 @@ Enter a number (default=1):
 ```
 
 ## Releases
-Release notes can be found in [GitHub](https://github.com/ReekyMarko/lqsd/releases) (Gitea does not support editing tags yet).
+Release notes can be found in [GitHub](https://github.com/FunctionalHacker/lqsd/releases) (Gitea does not support editing tags yet).
 
 Prebuilt binaries, their checksums and signatures can also be found there.
 
@@ -62,4 +62,4 @@ Prebuilt binaries, their checksums and signatures can also be found there.
 I wanted start a small project to learn Rust. Before lqsd, I was using [this script](https://github.com/Bonnee/dotfiles/blob/wayland/scripts/bin/dim.sh) and figured, why not rewrite it in Rust.
 
 # Mirrors
-This repository lives at [My Git server](https://git.reekynet.com/ReekyMarko/lqsd), but it is also mirrored to [GitHub](https://github.com/ReekyMarko/lqsd) and [GitLab](https://gitlab.com/ReekyMarko/lqsd)
+This repository lives at [My Git server](https://git.korhonen.cc/FunctionalHacker/lqsd), but it is also mirrored to [GitHub](https://github.com/FunctionalHacker/lqsd) and [GitLab](https://gitlab.com/FunctionalHacker/lqsd)

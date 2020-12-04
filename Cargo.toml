@@ -1,11 +1,11 @@
 [package]
 name = "lqsd"
 version = "0.1.1"
-authors = ["Marko Korhonen <marko.korhonen@reekynet.com>"]
+authors = ["Marko Korhonen <lqsd@functionalhacker.korhonen.cc>"]
 edition = "2018"
 publish = false
 description = "Dims your screen smoothly"
-repository = "https://git.reekynet.com/ReekyMarko/lqsd"
+repository = "https://git.korhonen.cc/FunctionalHacker/lqsd"
 license = "MIT"
 
 [dependencies]
