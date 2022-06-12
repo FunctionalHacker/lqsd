@@ -47,7 +47,7 @@ md5sum -c lqsd.md5
 printf "\n\n"
 
 printf "\e[34m Building documentation\e[0m\n"
-asciidoc -b manpage manpage.adoc
+asciidoctor -b manpage manpage.adoc
 
 printf "\n\n"
 
