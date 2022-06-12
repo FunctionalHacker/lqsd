@@ -1,0 +1,31 @@
+= lqsd(1)
+Marko Korhonen
+v0.1.1
+:doctype: manpage
+:manmanual: LQSD
+:mansource: LQSD
+:man-linkstyle: pass:[blue R < >]
+
+== Name
+
+lqsd - dim your screen smoothly
+
+== Synopsis
+
+*lqsd* [_OPTION_]
+
+== Options
+
+*-d, --dim*::
+	Dims the screen to idle level set in configuration
+*-r, --resume*::
+	Sets the backlight to the value it was before dimming
+*--copy-config*::
+	Copies the default config file to $XDG_CONFIG_HOME/lqsd
+*-h, --help*::
+	Prints help information
+*-V, --version*::
+	Prints version information
+
+== Resources
+*Project source code:* https://git.korhonen.cc/FunctionalHacker/lqsd

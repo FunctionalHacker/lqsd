@@ -23,6 +23,7 @@ printf "\e[34m Copying needed files for release\e[0m\n\n"
 mkdir release
 cp target/release/lqsd release/
 cp LICENSE release/
+cp manpage.adoc release/
 cd release
 
 printf "\e[34m Signing binary with GPG\e[0m\n"
@@ -45,6 +46,10 @@ md5sum -c lqsd.md5
 
 printf "\n\n"
 
+printf "\e[34m Building documentation\e[0m\n"
+asciidoc -b manpage manpage.adoc
+
+printf "\n\n"
 
 printf "\e[34m Compressing to tar.zst\e[0m\n\n"
 tar cf lqsd_${VERSION_NR}_x86_64.tar.zst * --zstd
