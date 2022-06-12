@@ -5,7 +5,7 @@ brightness too, so you can restore to the point before dimming.
 
 This is useful if you are running a standalone screen locking setup like
 swayidle/swaylock. Check out
-https://git.korhonen.cc/FunctionalHacker/dotfiles/src/branch/master/home/.config/sway/scripts/idle.sh[my
+https://git.korhonen.cc/FunctionalHacker/dotfiles/src/branch/main/home/.config/sway/scripts/idle.sh[my
 configuration files] for an example use case.
 
 == Usage
