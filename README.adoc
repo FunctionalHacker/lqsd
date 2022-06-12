@@ -53,15 +53,19 @@ In the configuration file you can set the following values:
 |===
 
 == Installation
+
 === Dependencies
+
 The only external dependency is
 https://github.com/haikarainen/light[light].
 
 === Building
+
 Clone this repository and run `cargo build --release` inside the project
 to compile a static binary.
 
 === Arch Linux
+
 So far, I have only packaged this for Arch Linux. Packages are in
 https://aur.archlinux.org/packages/?K=lqsd[AUR].
 
@@ -85,6 +89,7 @@ Enter a number (default=1):
 ----
 
 == Releases
+
 Release notes can be found in
 https://github.com/FunctionalHacker/lqsd/releases[GitHub] (Gitea does
 not support editing tags yet).
@@ -93,11 +98,13 @@ Prebuilt binaries, their checksums and signatures can also be found
 there.
 
 == Why Rust?
+
 I wanted start a small project to learn Rust. Before lqsd, I was using
 https://github.com/Bonnee/dotfiles/blob/wayland/scripts/bin/dim.sh[this
 script] and figured, why not rewrite it in Rust.
 
 == Mirrors
+
 This repository lives at
 https://git.korhonen.cc/FunctionalHacker/lqsd[My Git server], but it is
 also mirrored to https://github.com/FunctionalHacker/lqsd[GitHub] and
