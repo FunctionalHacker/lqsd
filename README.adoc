@@ -90,12 +90,9 @@ Enter a number (default=1):
 
 == Releases
 
-Release notes can be found in
-https://github.com/FunctionalHacker/lqsd/releases[GitHub] (Gitea does
-not support editing tags yet).
-
-Prebuilt binaries, their checksums and signatures can also be found
-there.
+Release notes and binaries can be found either in
+https://git.korhonen.cc/FunctionalHacker/lqsd[My Git server] or
+https://github.com/FunctionalHacker/lqsd/releases[GitHub].
 
 == Why Rust?
 
