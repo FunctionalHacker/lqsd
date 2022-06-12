@@ -91,7 +91,7 @@ Enter a number (default=1):
 == Releases
 
 Release notes and binaries can be found either in
-https://git.korhonen.cc/FunctionalHacker/lqsd[My Git server] or
+https://git.korhonen.cc/FunctionalHacker/lqsd/releases[My Git server] or
 https://github.com/FunctionalHacker/lqsd/releases[GitHub].
 
 == Why Rust?
