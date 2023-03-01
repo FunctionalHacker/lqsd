@@ -1,18 +1,18 @@
-#!/bin/bash
+#!/bin/sh
 
-if (( $# == 1 )); then
+if [ $# = 1 ]; then
 	TAG=$1
 else
-	TAG=$(git tag | tail -n1)
+	TAG=$(git tag | tail -1)
 fi
 
-VERSION_NR=$(printf $TAG | cut -c2-)
+VERSION_NR=$(echo "$TAG" | cut -c2-)
 
-printf "\e[34m Building release version $VERSION_NR\e[0m\n\n"
+printf "\e[34m Building release version %s\e[0m\n\n" "$VERSION_NR"
 
 
-printf "\e[34m Checking out $TAG\e[0m\n\n"
-git checkout tags/$TAG > /dev/null 2>&1
+printf "\e[34m Checking out %s \e[0m\n\n" "$TAG"
+git checkout "tags/$TAG" > /dev/null 2>&1
 
 printf "\e[34m Building with cargo\e[0m\n"
 cargo build --release --locked
@@ -24,7 +24,7 @@ mkdir release
 cp target/release/lqsd release/
 cp LICENSE release/
 cp manpage.adoc release/
-cd release
+cd release || return
 
 printf "\e[34m Signing binary with GPG\e[0m\n"
 gpg --detach-sign --armor lqsd
@@ -52,14 +52,14 @@ asciidoctor -b manpage manpage.adoc
 printf "\n\n"
 
 printf "\e[34m Compressing to tar.zst\e[0m\n\n"
-tar cf lqsd_${VERSION_NR}_x86_64.tar.zst * --zstd
+tar cf lqsd_"${VERSION_NR}"_x86_64.tar.zst ./* --zstd
 
-mv *.tar.zst ..
+mv ./*.tar.zst ..
 
 cd ..
 
 printf "\e[34m removing leftover files\e[0m\n\n"
 rm -r release
 
-printf "\e[34m Returning to master\e[0m\n\n"
-git checkout master > /dev/null 2>&1
+printf "\e[34m Returning to main\e[0m\n\n"
+git checkout main > /dev/null 2>&1
