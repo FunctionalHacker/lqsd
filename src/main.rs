@@ -49,12 +49,12 @@ fn get_brightness() -> i32 {
 }
 
 fn main() {
-    let args = cli::get_args();
+    let args = cli::app().get_matches();
     let conf: Config;
 
-    if args.is_present("config") {
-        let config_path = PathBuf::from(args.value_of("config").unwrap());
-        conf = config::load_user(config_path);
+    if let Some(config_path) = args.get_one::<String>("config") {
+        let config_path_buf = PathBuf::from(config_path);
+        conf = config::load_user(config_path_buf);
     } else {
         conf = config::load_xdg();
     }
@@ -62,7 +62,7 @@ fn main() {
     let dim_speed = time::Duration::from_millis(conf.dim_speed);
     let resume_speed = time::Duration::from_millis(conf.resume_speed);
 
-    if args.is_present("dim") {
+    if args.get_flag("dim") {
         let current_brightness = get_brightness().to_string();
         match fs::write(&conf.resume_file, current_brightness) {
             Ok(()) => println!(
@@ -74,7 +74,7 @@ fn main() {
         transition(conf.idle_level, dim_speed);
     }
 
-    if args.is_present("resume") {
+    if args.get_flag("resume") {
         let old_brightness: i32;
 
         match fs::read(&conf.resume_file) {
@@ -93,7 +93,7 @@ fn main() {
         }
     }
 
-    if args.is_present("copy-config") {
+    if args.get_flag("copy-config") {
         config::copy_config();
     }
 }

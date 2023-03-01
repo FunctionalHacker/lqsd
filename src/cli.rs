@@ -1,42 +1,47 @@
 extern crate clap;
-use clap::{App, AppSettings, Arg};
+use clap::{Command, Arg, ArgAction};
 
-pub fn get_args() -> clap::ArgMatches<'static> {
-    App::new("LiQuid Screen Dim")
+pub fn app() -> Command {
+    Command::new("LiQuid Screen Dim")
         .version(env!("CARGO_PKG_VERSION"))
         .author(env!("CARGO_PKG_AUTHORS"))
         .about(env!("CARGO_PKG_DESCRIPTION"))
-        .setting(AppSettings::ArgRequiredElseHelp)
+        .arg_required_else_help(true)
         .arg(
-            Arg::with_name("dim")
+            Arg::new("dim")
                 .long("dim")
-                .short("d")
-                .takes_value(false)
+                .short('d')
+                .action(ArgAction::SetTrue)
                 .display_order(1)
                 .help("Dims the screen to idle level set in configuration"),
         )
         .arg(
-            Arg::with_name("resume")
+            Arg::new("resume")
                 .long("resume")
-                .short("r")
-                .takes_value(false)
+                .short('r')
+                .action(ArgAction::SetTrue)
                 .display_order(2)
                 .help("Sets the backlight to the value it was before dimming"),
         )
         .arg(
-            Arg::with_name("copy-config")
+            Arg::new("copy-config")
                 .long("copy-config")
-                .takes_value(false)
+                .action(ArgAction::SetTrue)
                 .display_order(3)
                 .help("Copies the default config file to $XDG_CONFIG_HOME/lqsd"),
         )
         .arg(
-            Arg::with_name("config")
+            Arg::new("config")
+                .short('c')
                 .long("config")
-                .takes_value(true)
+                .num_args(1)
                 .number_of_values(1)
                 .value_name("FILE")
                 .help("Sets a custom config file"),
         )
-        .get_matches()
+}
+
+#[test]
+fn verify_app() {
+    app().debug_assert();
 }
